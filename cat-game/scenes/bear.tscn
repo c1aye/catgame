@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://db6rru3ermaxy"]
+
+[ext_resource type="Script" uid="uid://dcma0rh1yojbb" path="res://scenes/bear.gd" id="1_v0uag"]
+[ext_resource type="Texture2D" uid="uid://cm7pkutun0410" path="res://character/cat1.png" id="2_a5djg"]
+[ext_resource type="Texture2D" uid="uid://cmjf0esdcvafn" path="res://character/cat2.png" id="3_h7gg4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r4uyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a5djg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h7gg4")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0f2y1"]
+radius = 13.0
+height = 68.0
+
+[node name="bear" type="CharacterBody2D"]
+script = ExtResource("1_v0uag")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(29.9605, 17.25)
+scale = Vector2(2.81579, 2.81579)
+sprite_frames = SubResource("SpriteFrames_r4uyl")
+animation = &"flying"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(33, 26)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0f2y1")
